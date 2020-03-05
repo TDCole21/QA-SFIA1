@@ -1,0 +1,16 @@
+{%extends 'layout.html'%}
+
+{%block body%}
+<div class="container"></div>
+<h1 align="center">Home Page</h1>
+<p align="center">Welcome to this web app!</p>
+{% for post in posts %}
+<div>
+<h3>{{ post.title }}</h3>
+<p><b> - First name:</b>{{ post.name.first }}</p>
+<p><b> - Last name:</b>{{ post.name.last }}</p>
+<p> -- {{ post.content }}</p>
+</div>
+{% endfor %}
+</div>
+{%endblock%}

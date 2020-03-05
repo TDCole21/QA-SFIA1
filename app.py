@@ -17,7 +17,7 @@ mysql = MySQL(app)
 @app.route('/home')
 def home():
     cur = mysql.connection.cursor()
-    cur.execute("CREATE TABLE testtable(ID INT(3), name VARCHAR(20));")
+    cur.execute("CREATE TABLE IF NOT EXISTS testtable(ID INT(3), name VARCHAR(20));")
     mysql.connection.commit()
     cur.close()
 

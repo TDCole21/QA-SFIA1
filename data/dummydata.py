@@ -1,6 +1,3 @@
-from flask import render_template
-#from app import app 
-
 dummyData = [
     {
         "name": {"first":"Chester", "last":"Gardner"},

@@ -1,14 +1,15 @@
 from flask import Flask, render_template
-from templates import dummydata
+from data import dummydata
 from flask_mysqldb import MySQL
+from data import info
 
 
 app = Flask(__name__) #__name__ is for best practice
 
-app.config["MYSQL_HOST"] = '34.65.134.225'
-app.config["MYSQL_USER"] = 'root'
-app.config["MYSQL_PASSWORD"] = 'Rosliston21'
-app.config["MYSQL_DB"] = 'accountdb'
+app.config["MYSQL_HOST"] = info.MYSQL_HOST
+app.config["MYSQL_USER"] = info.MYSQL_USER
+app.config["MYSQL_PASSWORD"] = info.MYSQL_PASSWORD
+app.config["MYSQL_DB"] = info.MYSQL_DB
 
 mysql = MySQL(app)
 

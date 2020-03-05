@@ -12,5 +12,10 @@
 <p> -- {{ post.content }}</p>
 </div>
 {% endfor %}
+
+{% for i in info1 %}
+<li><a>{{i[0]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
+{% endfor %}
+
 </div>
 {%endblock%}

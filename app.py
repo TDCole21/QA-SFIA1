@@ -17,12 +17,18 @@ mysql = MySQL(app)
 @app.route('/home')
 def home():
     cur = mysql.connection.cursor()
-    cur.execute("CREATE TABLE IF NOT EXISTS testtable(ID INT(3), name VARCHAR(20));")
+    cur.execute("CREATE TABLE IF NOT EXISTS testtable(ID INT(3) PRIMARY KEY, name VARCHAR(20));") #cur.execute requires SQL commands
+    cur.execute("SELECT * FROM testtable")
     mysql.connection.commit()
+    rows = cur.fetchall() #built in function to return a tuple, list or dictionary
     cur.close()
 
+    info = []
 
-    return render_template("index.html", name="Home", page="active", posts=dummydata.dummyData)
+    for row in rows:
+        info.append(row) #adding each row from the database into a newly created list, info
+
+    return render_template("index.html", name="Home", page="active", info1=info, posts=dummydata.dummyData)
 
 @app.route('/actors')
 def actors():

@@ -4,13 +4,8 @@
 <div class="container"></div>
 <h1 align="center">{{name}} Page</h1>
 <p align="center">Welcome to this web app!</p>
-{% for post in posts %}
-<div>
-<h3>{{ post.title }}</h3>
-<p><b> - First name:</b>{{ post.name.first }}</p>
-<p><b> - Last name:</b>{{ post.name.last }}</p>
-<p> -- {{ post.content }}</p>
-</div>
+{% for i in info1 %}
+<li><a>{{i[1]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
 {% endfor %}
 </div>
 {%endblock%}

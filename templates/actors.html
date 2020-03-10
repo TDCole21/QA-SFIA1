@@ -3,23 +3,29 @@
 {%block body%}
 <div class="container">
 <h1 align="center">{{name}} Page</h1>
-<p align="center">Welcome to this web app!</p>
+<p align="center">This page will show you the films in our database</p>
 
 
 <form method="POST" action="{{ url_for('actors_create') }}">
     <center>
-    <H1>Add an Actor </H1> <br>
-    Name <input type = "text" name= "name" /> <br>
+    <H1>Add an Actor:</H1>
+    Name <input type = "text" name= "name" />
     <input type = "submit">
     </center>
 </form>
 
 <br />
 
-<form method="POST" action="{{ url_for('actors_delete') }}">
+<form method="POST" action="{{url_for('actors_delete')}}">
+    <!-- Activity <input type = "text" name= "activ" /> <br> -->
     <center>
-    <H1>Remove an Actor</H1> <br>
-    Name <input type = "text" name= "name" /> <br>
+    <H1>Remove an Actor:</H1>
+        <select name= "actors">
+            <option >- Choose an Actor -</option>
+        {%for i in info1%}
+            <option >{{ i[1] }}</option>
+        {%endfor%}
+        </select>
     <input type = "submit">
     </center>
 </form>
@@ -28,15 +34,23 @@
 
 <form method="POST" action="{{ url_for('actors_update') }}">
     <center>
-    <H1>Update an Actor</H1> <br>
-    Change Name From <input type = "text" name= "initialname" /> <br>
-    Change Name To <input type = "text" name= "finalname" /> <br>    
+    <H1>Update an Actor:</H1>
+    <label>Change Name From:</label>
+    <select name= "initialname">
+        <option >- Choose an Actor -</option>
+    {%for i in info1%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
+    <!-- Change Name From <input type = "text" name= "initialname" /> <br> -->
+    Change Name To <input type = "text" name= "finalname" />   
     <input type = "submit">
     </center>
 </form>
 
+<br><br>
 
-<p>This page will show you the actors in our database</p>
+<H2>Database:</H2>
 {% for i in info1 %}
 <li><a>{{i[1]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
 {% endfor %}

@@ -42,7 +42,7 @@ def actors():
     for row in rows:
         info.append(row) #adding each row from the database into a newly created list, info  
 
-    return render_template("actors.html", name="Actors", info1=info)
+    return render_template("actors.html", name="Actor Database", info1=info)
 
 @app.route('/actors/create', methods=['GET', 'POST']) # Create function
 def actors_create():
@@ -62,16 +62,19 @@ def actors_create():
 def actors_delete():
     if request.method == "POST":
         details=request.form
-        name=details['name']
-        if name != "":
-            cur = mysql.connection.cursor()
-            cur.execute("DELETE FROM Actors WHERE Actor_Name = (%s)", [name])
+        actors=details['actors']
+        if actors != "- Choose an Actor -":
+            cur=mysql.connection.cursor()
+            cur.execute("DELETE FROM Actors WHERE Actor_Name = (%s)", [actors]) #works in GCP SQL
             mysql.connection.commit()
             cur.close()
-
+    cur=mysql.connection.cursor()
+    cur.execute("SELECT * FROM Actors")
+    mysql.connection.commit()
+    rows = cur.fetchall()
+    cur.close()
+    
     return redirect(url_for('actors'))
-
-# Add an if statement that means you can only delete soemthing from within the database
  
 
 @app.route('/actors/update', methods=['GET', 'POST']) # Update function
@@ -80,7 +83,7 @@ def actors_update():
         details=request.form
         fromname=details['initialname']
         toname=details['finalname']
-        if fromname != "" and toname != "":
+        if fromname != "- Choose an Actor -":
             cur = mysql.connection.cursor()
             cur.execute("UPDATE Actors SET Actor_Name=(%s) WHERE Actor_Name=(%s)", [toname, fromname])
             mysql.connection.commit()
@@ -107,14 +110,14 @@ def films():
     for row in rows:
         info.append(row) #adding each row from the database into a newly created list, info  
 
-    return render_template("films.html", name="Films", info1=info)
+    return render_template("films.html", name="Film Database", info1=info)
 
 @app.route('/films/create', methods=['GET', 'POST']) # Create function
 def films_create():
     if request.method == "POST":
         details=request.form
         name=details['name']
-        if name != "":
+        if name != "Choose a Film":
             cur = mysql.connection.cursor()
             cur.execute("INSERT INTO Films (Film_Name) VALUES (%s)", [name])
             mysql.connection.commit()
@@ -128,10 +131,11 @@ def films_delete():
     if request.method == "POST":
         details=request.form
         films=details['films']
-        cur=mysql.connection.cursor()
-        cur.execute("DELETE FROM Films WHERE Film_Name = (%s)", [films]) #works in GCP SQL
-        mysql.connection.commit()
-        cur.close()
+        if actors != "- Choose a Film -":
+            cur=mysql.connection.cursor()
+            cur.execute("DELETE FROM Films WHERE Film_Name = (%s)", [films]) #works in GCP SQL
+            mysql.connection.commit()
+            cur.close()
     cur=mysql.connection.cursor()
     cur.execute("SELECT * FROM Films")
     mysql.connection.commit()

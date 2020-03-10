@@ -3,7 +3,7 @@
 {%block body%}
 <div class="container">
 <h1 align="center">{{name}} Page</h1>
-<p align="center">Welcome to this web app!</p>
+<p align="center">This page will show you the films in our database</p>
 
 
 <form method="POST" action="{{ url_for('films_create') }}">
@@ -22,6 +22,7 @@
     <center>
     <H1>Remove a film:</H1>
         <select name= "films">
+            <option >- Choose a Film -</option>
         {%for i in info1%}
             <option >{{ i[1] }}</option>
         {%endfor%}
@@ -39,6 +40,7 @@
     <H1>Update a Film:</H1>
     <label>Change Name From:</label>
     <select name= "initialname">
+        <option >- Choose a Film -</option>
     {%for i in info1%}
         <option >{{ i[1] }}</option>
     {%endfor%}
@@ -51,7 +53,7 @@
 
 <br><br>
 
-<p>This page will show you the films in our database</p>
+<H2>Database:</H2>
 {% for i in info1 %}
 <li><a>{{i[1]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
 {% endfor %}

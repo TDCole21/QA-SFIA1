@@ -1,11 +1,62 @@
 {%extends 'layout.html'%}
 
 {%block body%}
-<div class="container"></div>
+<div class="container">
 <h1 align="center">{{name}} Page</h1>
 <p align="center">Welcome to this web app!</p>
+
+
+<form method="POST" action="{{ url_for('films_create') }}">
+    <center>
+    <H1>Add a Film:</H1>
+    Name <input type = "text" name= "name" />
+    <input type = "submit">
+    </center>
+</form>
+
+<br />
+
+
+<form method="POST" action="{{url_for('films_delete')}}">
+    <!-- Activity <input type = "text" name= "activ" /> <br> -->
+    <center>
+    <H1>Remove a film:</H1>
+        <select name= "films">
+        {%for i in info1%}
+            <option >{{ i[1] }}</option>
+        {%endfor%}
+        </select>
+    <input type = "submit">
+    </center>
+</form>
+
+
+
+<br />
+
+<form method="POST" action="{{ url_for('films_update') }}">
+    <center>
+    <H1>Update a Film:</H1>
+    <label>Change Name From:</label>
+    <select name= "initialname">
+    {%for i in info1%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
+    <!-- Change Name From <input type = "text" name= "initialname" /> <br> -->
+    Change Name To <input type = "text" name= "finalname" />   
+    <input type = "submit">
+    </center>
+</form>
+
+<br><br>
+
+<p>This page will show you the films in our database</p>
 {% for i in info1 %}
 <li><a>{{i[1]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
 {% endfor %}
+
 </div>
+
+
 {%endblock%}

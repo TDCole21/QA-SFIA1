@@ -75,6 +75,7 @@ def actors_delete():
     cur.close()
     
     return redirect(url_for('actors'))
+    
  
 
 @app.route('/actors/update', methods=['GET', 'POST']) # Update function

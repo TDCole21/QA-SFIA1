@@ -11,3 +11,19 @@ INSERT INTO Films (Film_Name) VALUES ("Star Wars: The Force Awakens"),("The Aven
 
 INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Star Wars: The Force Awakens'), (SELECT Actor_ID from Actors WHERE Actor_Name='Harrison Ford'));
 
+
+-- Deletes from two tables
+DELETE Actors, Film_Actor
+FROM Actors
+INNER JOIN Film_Actor ON Actors.Actor_ID = Film_Actor.ActorID
+WHERE Actors.Actor_Name='Harrison Ford';
+
+-- Select from two independent tables
+SELECT *
+FROM Actors
+INNER JOIN Film_Actor ON Actors.Actor_ID = Film_Actor.ActorID
+WHERE Actors.Actor_Name='Harrison Ford';
+
+
+select * from Films where Film_ID in (select FilmID from Film_Actor)
+select Film_Name from Films where Film_ID in (select FilmID from Film_Actor where ActorID=(SELECT Actor_ID from Actors WHERE Actor_Name='Harrison Ford'));

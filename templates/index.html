@@ -4,17 +4,47 @@
 <div class="container"></div>
 <h1 align="center">{{name}} Page</h1>
 <p align="center">Welcome to this web app!</p>
-{% for post in posts %}
-<div>
-<h3>{{ post.title }}</h3>
-<p><b> - First name:</b>{{ post.name.first }}</p>
-<p><b> - Last name:</b>{{ post.name.last }}</p>
-<p> -- {{ post.content }}</p>
-</div>
-{% endfor %}
+
+<form method="POST" action="{{url_for('actors_search')}}">
+    <!-- Activity <input type = "text" name= "activ" /> <br> -->
+    <center>
+    <H1>Select an Actor:</H1>
+        <select name= "actors">
+            <option >- Choose an Actor -</option>
+        {%for i in info1%}
+            <option >{{ i[1] }}</option>
+        {%endfor%}
+        </select>
+    <input type = "submit">
+    </center>
+</form>
+
+<form method="POST" action="{{url_for('films_search')}}">
+    <!-- Activity <input type = "text" name= "activ" /> <br> -->
+    <center>
+    <H1>Or, select a Film:</H1>
+        <select name= "films">
+            <option >- Choose a Film -</option>
+        {%for i in info2%}
+            <option >{{ i[1] }}</option>
+        {%endfor%}
+        </select>
+    <input type = "submit">
+    </center>
+</form>
 
 
 <p>Going to this page will test the CRUD functionalities</p>
+
+<H2>{{actor}}</H2>
+{% for i in filmchoice %}
+<li><a>{{i[0]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
+{% endfor %}
+
+<H2>{{film}}</H2>
+{% for i in actorchoice %}
+<li><a>{{i[0]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
+{% endfor %}
 
 </div>
 {%endblock%}

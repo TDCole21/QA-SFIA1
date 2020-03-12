@@ -46,5 +46,29 @@
 <li><a>{{i[0]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
 {% endfor %}
 
+
+
+<form method="POST" action="{{ url_for('actor_film_associate') }}">
+    <center>
+    <label>Associate a Film:</label>
+    <select name= "filmname">
+        <option >- Choose a Film -</option>
+    {%for i in info2%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
+    <label>to an Actor:</label>
+    <select name= "actorname">
+        <option >- Choose an Actor -</option>
+    {%for i in info1%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
+    <input type = "submit">
+    </center>
+</form>
+
+
+
 </div>
 {%endblock%}

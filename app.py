@@ -117,6 +117,44 @@ def films_search():
             return render_template("index.html", name="Home", film="Actors starring in "+films+":", actorchoice=actorselection, info2=info, info1=filmselection)
     return redirect(url_for('home'))
 
+
+@app.route('/home/link', methods=['GET', 'POST']) # Delete function
+def actor_film_associate():
+    if request.method == "POST":
+        details=request.form
+        films=details['filmname']
+        actors=details['actorname']
+        if films != "- Choose a Film -" and actors != "- Choose an Actor -":
+            cur = mysql.connection.cursor()
+            cur.execute("INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name=(%s)), (SELECT Actor_ID from Actors WHERE Actor_Name=(%s)));", [films, actors])
+            mysql.connection.commit()
+            rows = cur.fetchall() #built in function to return a tuple, list or dictionary
+            cur.execute("SELECT * FROM Films")
+            mysql.connection.commit()
+            row2 = cur.fetchall() #built in function to return a tuple, list or dictionary
+            cur.execute("SELECT * FROM Actors")
+            mysql.connection.commit()
+            row3 = cur.fetchall() #built in function to return a tuple, list or dictionary
+            cur.close()
+
+            actorselection = []
+
+            for row in rows:
+                actorselection.append(row) #adding each row from the database into a newly created list, info  
+            
+            filmselection = []
+
+            for row in row3:
+                filmselection.append(row) #adding each row from the database into a newly created list, info
+
+            info = []
+
+            for row in row2:
+                info.append(row) #adding each row from the database into a newly created list, info  
+
+            #return render_template("index.html", name="Home", film="Actors starring in "+films+":", actorchoice=actorselection, info2=info, info1=filmselection)
+    return redirect(url_for('home'))
+
     
 
 ######################################################################################################################################################################

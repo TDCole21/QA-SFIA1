@@ -27,3 +27,11 @@ WHERE Actors.Actor_Name='Harrison Ford';
 
 select * from Films where Film_ID in (select FilmID from Film_Actor)
 select Film_Name from Films where Film_ID in (select FilmID from Film_Actor where ActorID=(SELECT Actor_ID from Actors WHERE Actor_Name='Harrison Ford'));
+
+-- Update two independent tables
+cur.execute("UPDATE Actors SET Actor_Name=(%s) WHERE Actor_Name=(%s)", [toname, fromname])
+cur.execute("INSERT INTO Film_Actor VALUES((SELECT Film_ID from Films WHERE Film_Name=(%s), (SELECT Actor_ID from Actors WHERE Actor_Name=(%s))))", [actorname, filmname])
+
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Star Wars: The Force Awakens'), (SELECT Actor_ID from Actors WHERE Actor_Name='Harrison Ford'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name="Shrek 2"), (SELECT Actor_ID from Actors WHERE Actor_Name="Eddie Murphy"));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name=(%s)), (SELECT Actor_ID from Actors WHERE Actor_Name=(%s)));

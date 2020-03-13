@@ -1,3 +1,5 @@
+-- Database setup
+
 CREATE DATABASE IF NOT EXISTS SFIA1;
 
 USE SFIA1;
@@ -10,6 +12,56 @@ INSERT INTO Actors (Actor_Name) VALUES ("Harrison Ford"),("Samuel L. Jackson"),(
 INSERT INTO Films (Film_Name) VALUES ("Star Wars: The Force Awakens"),("The Avengers"),("The Dark Knight"),("Toy Story 3"),("Shrek 2"),("War of the Worlds"),("Dead Man's Chest"),("Night at the Museum"),("Sixth Sense"),("Return of the King"),("Independence Day"),("Catching Fire"),("The Martian"),("Meet the Fockers"),("The Phantom Menace"),("Avengers: Age of Ultron"),("Harry Potter and the Deathly Hallows Part 2"),("Ocean's Eleven"),("Men in Black"),("World War Z"),("Hotel Transylvania 2"),("The LEGO Movie"),("American Sniper"),("Transformers 4"),("The Grinch"),("Titanic"),("Minions"),("The Dark Knight Rises");
 
 INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Star Wars: The Force Awakens'), (SELECT Actor_ID from Actors WHERE Actor_Name='Harrison Ford'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Avengers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Samuel L. Jackson'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Dark Knight'), (SELECT Actor_ID from Actors WHERE Actor_Name='Morgan Freeman'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Toy Story 3'), (SELECT Actor_ID from Actors WHERE Actor_Name='Tom Hanks'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Avengers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Robert Downey, Jr.'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Shrek 2'), (SELECT Actor_ID from Actors WHERE Actor_Name='Eddie Murphy'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='War of the Worlds'), (SELECT Actor_ID from Actors WHERE Actor_Name='Tom Cruise'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Dead Man\'s Chest'), (SELECT Actor_ID from Actors WHERE Actor_Name='Johnny Depp'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Dark Knight'), (SELECT Actor_ID from Actors WHERE Actor_Name='Michael Caine'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Avengers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Scarlett Johansson'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Dark Knight'), (SELECT Actor_ID from Actors WHERE Actor_Name='Gary Oldman'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Night at the Museum'), (SELECT Actor_ID from Actors WHERE Actor_Name='Robin Williams'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Sixth Sense'), (SELECT Actor_ID from Actors WHERE Actor_Name='Bruce Willis'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Avengers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Stellan Skarsgard'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Star Wars: The Force Awakens'), (SELECT Actor_ID from Actors WHERE Actor_Name='Anthony Daniels'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Return of the King'), (SELECT Actor_ID from Actors WHERE Actor_Name='Ian McKellen'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Independence Day'), (SELECT Actor_ID from Actors WHERE Actor_Name='Will Smith'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Catching Fire'), (SELECT Actor_ID from Actors WHERE Actor_Name='Stanley Tucci'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Martian'), (SELECT Actor_ID from Actors WHERE Actor_Name='Matt Damon'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Meet the Fockers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Robert DeNiro'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Shrek 2'), (SELECT Actor_ID from Actors WHERE Actor_Name='Cameron Diaz'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Phantom Menace'), (SELECT Actor_ID from Actors WHERE Actor_Name='Liam Neeson'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Star Wars: The Force Awakens'), (SELECT Actor_ID from Actors WHERE Actor_Name='Andy Serkis'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Avengers: Age of Ultron'), (SELECT Actor_ID from Actors WHERE Actor_Name='Don Cheadle'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Meet the Fockers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Ben Stiller'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Harry Potter and the Deathly Hallows Part 2'), (SELECT Actor_ID from Actors WHERE Actor_Name='Helena Bonham Carter'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Dead Man\'s Chest'), (SELECT Actor_ID from Actors WHERE Actor_Name='Orlando Bloom'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Catching Fire'), (SELECT Actor_ID from Actors WHERE Actor_Name='Woody Harrelson'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Return of the King'), (SELECT Actor_ID from Actors WHERE Actor_Name='Cate Blanchett'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Ocean\'s Eleven'), (SELECT Actor_ID from Actors WHERE Actor_Name='Julia Roberts'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Catching Fire'), (SELECT Actor_ID from Actors WHERE Actor_Name='Elizabeth Banks'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Harry Potter and the Deathly Hallows Part 2'), (SELECT Actor_ID from Actors WHERE Actor_Name='Ralph Fiennes'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Harry Potter and the Deathly Hallows Part 2'), (SELECT Actor_ID from Actors WHERE Actor_Name='Emma Watson'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Men in Black'), (SELECT Actor_ID from Actors WHERE Actor_Name='Tommy Lee Jones'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='World War Z'), (SELECT Actor_ID from Actors WHERE Actor_Name='Brad Pitt'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Hotel Transylvania 2'), (SELECT Actor_ID from Actors WHERE Actor_Name='Adam Sandler'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Harry Potter and the Deathly Hallows Part 2'), (SELECT Actor_ID from Actors WHERE Actor_Name='Daniel Radcliffe'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The LEGO Movie'), (SELECT Actor_ID from Actors WHERE Actor_Name='Jonah Hill'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Night at the Museum'), (SELECT Actor_ID from Actors WHERE Actor_Name='Owen Wilson'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Avengers: Age of Ultron'), (SELECT Actor_ID from Actors WHERE Actor_Name='Idris Elba'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='American Sniper'), (SELECT Actor_ID from Actors WHERE Actor_Name='Bradley Cooper'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Transformers 4'), (SELECT Actor_ID from Actors WHERE Actor_Name='Mark Wahlberg'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Grinch'), (SELECT Actor_ID from Actors WHERE Actor_Name='Jim Carrey'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Meet the Fockers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Dustin Hoffman'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Titanic'), (SELECT Actor_ID from Actors WHERE Actor_Name='Leonardo DiCaprio'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Avengers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Jeremy Renner'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Catching Fire'), (SELECT Actor_ID from Actors WHERE Actor_Name='Philip Seymour Hoffman'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Minions'), (SELECT Actor_ID from Actors WHERE Actor_Name='Sandra Bullock'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Avengers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Chris Evans'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Dark Knight Rises'), (SELECT Actor_ID from Actors WHERE Actor_Name='Anne Hathaway'));
+
 
 
 -- Deletes from two tables

@@ -63,16 +63,14 @@ def actors_search():
             cur.close()
 
             filmchoice = []
+            filmselection = []
+            actorselection = []
 
             for row in selectfilmnames:
                 filmchoice.append(row) #adding each row from the database into a newly created list, info  
 
-            filmselection = []
-
             for row in filmnames:
                 filmselection.append(row) #adding each row from the database into a newly created list, info 
-
-            actorselection = []
 
             for row in actornames:
                 actorselection.append(row) #adding each row from the database into a newly created list, info  
@@ -100,16 +98,14 @@ def films_search():
             cur.close()
 
             actorchoice = []
+            actorselection = []
+            filmselection = []
 
             for row in selectactornames:
                 actorchoice.append(row) #adding each row from the database into a newly created list, info  
-            
-            actorselection = []
 
             for row in actornames:
                 actorselection.append(row) #adding each row from the database into a newly created list, info
-
-            filmselection = []
 
             for row in filmnames:
                 filmselection.append(row) #adding each row from the database into a newly created list, info  
@@ -140,17 +136,15 @@ def actor_film_associate():
             cur.close()
 
             actorchoice = []
+            actorselection = []
+            filmselection = []
 
             for row in selectactornames:
                 actorchoice.append(row) #adding each row from the database into a newly created list, info  
-            
-            actorselection = []
-
+                     
             for row in actornames:
                 actorselection.append(row) #adding each row from the database into a newly created list, info
-
-            filmselection = []
-
+            
             for row in filmnames:
                 filmselection.append(row) #adding each row from the database into a newly created list, info  
 
@@ -203,11 +197,6 @@ def actors_delete():
             cur.execute("DELETE FROM Actors WHERE Actor_Name = (%s)", [actors]) #works in GCP SQL
             mysql.connection.commit()
             cur.close()
-    cur=mysql.connection.cursor()
-    cur.execute("SELECT * FROM Actors")
-    mysql.connection.commit()
-    rows = cur.fetchall()
-    cur.close()
     
     return redirect(url_for('actors'))
     
@@ -224,7 +213,6 @@ def actors_update():
             cur.execute("UPDATE Actors SET Actor_Name=(%s) WHERE Actor_Name=(%s)", [toname, fromname])
             mysql.connection.commit()
             cur.close()
-            return redirect(url_for('actors'))
 
     return redirect(url_for('actors'))
 
@@ -273,11 +261,6 @@ def films_delete():
             cur.execute("DELETE FROM Films WHERE Film_Name = (%s)", [films]) #works in GCP SQL
             mysql.connection.commit()
             cur.close()
-    cur=mysql.connection.cursor()
-    cur.execute("SELECT * FROM Films")
-    mysql.connection.commit()
-    rows = cur.fetchall()
-    cur.close()
     
     return redirect(url_for('films'))
  
@@ -293,7 +276,6 @@ def films_update():
             cur.execute("UPDATE Films SET Film_Name=(%s) WHERE Film_Name=(%s)", [toname, fromname])
             mysql.connection.commit()
             cur.close()
-            return redirect(url_for('films'))
 
     return redirect(url_for('films'))
 

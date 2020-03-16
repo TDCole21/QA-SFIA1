@@ -11,7 +11,7 @@
     <H1>Select an Actor:</H1>
         <select name= "actors">
             <option >- Choose an Actor -</option>
-        {%for i in info1%}
+        {%for i in actorselection%}
             <option >{{ i[1] }}</option>
         {%endfor%}
         </select>
@@ -25,7 +25,7 @@
     <H1>Or, select a Film:</H1>
         <select name= "films">
             <option >- Choose a Film -</option>
-        {%for i in info2%}
+        {%for i in filmselection%}
             <option >{{ i[1] }}</option>
         {%endfor%}
         </select>
@@ -53,14 +53,14 @@
     <label>Associate a Film:</label>
     <select name= "filmname">
         <option >- Choose a Film -</option>
-    {%for i in info2%}
+    {%for i in filmselection%}
         <option >{{ i[1] }}</option>
     {%endfor%}
     </select>
     <label>to an Actor:</label>
     <select name= "actorname">
         <option >- Choose an Actor -</option>
-    {%for i in info1%}
+    {%for i in actorselection%}
         <option >{{ i[1] }}</option>
     {%endfor%}
     </select>

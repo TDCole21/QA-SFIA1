@@ -16,13 +16,14 @@
 
 <br />
 
+
 <form method="POST" action="{{url_for('actors_delete')}}">
     <!-- Activity <input type = "text" name= "activ" /> <br> -->
     <center>
     <H1>Remove an Actor:</H1>
         <select name= "actors">
             <option >- Choose an Actor -</option>
-        {%for i in info1%}
+        {%for i in actorselection%}
             <option >{{ i[1] }}</option>
         {%endfor%}
         </select>
@@ -38,7 +39,7 @@
     <label>Change Name From:</label>
     <select name= "initialname">
         <option >- Choose an Actor -</option>
-    {%for i in info1%}
+    {%for i in actorselection%}
         <option >{{ i[1] }}</option>
     {%endfor%}
     </select>
@@ -51,7 +52,7 @@
 <br><br>
 
 <H2>Database:</H2>
-{% for i in info1 %}
+{% for i in actorselection %}
 <li><a>{{i[1]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
 {% endfor %}
 

@@ -23,7 +23,7 @@
     <H1>Remove a film:</H1>
         <select name= "films">
             <option >- Choose a Film -</option>
-        {%for i in info1%}
+        {%for i in filmselection%}
             <option >{{ i[1] }}</option>
         {%endfor%}
         </select>
@@ -41,7 +41,7 @@
     <label>Change Name From:</label>
     <select name= "initialname">
         <option >- Choose a Film -</option>
-    {%for i in info1%}
+    {%for i in filmselection%}
         <option >{{ i[1] }}</option>
     {%endfor%}
     </select>
@@ -54,7 +54,7 @@
 <br><br>
 
 <H2>Database:</H2>
-{% for i in info1 %}
+{% for i in filmselection %}
 <li><a>{{i[1]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
 {% endfor %}
 

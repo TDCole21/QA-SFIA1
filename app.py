@@ -26,22 +26,22 @@ def home():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM Actors")
     mysql.connection.commit()
-    rows = cur.fetchall() #built in function to return a tuple, list or dictionary
+    actornames = cur.fetchall() #built in function to return a tuple, list or dictionary
     cur.execute("SELECT * FROM Films")
     mysql.connection.commit()
-    row2 = cur.fetchall() #built in function to return a tuple, list or dictionary
+    filmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
     cur.close()
 
-    info = []
-    info2 = []
+    actorselection = []
+    filmselection = []
 
-    for row in rows:
-        info.append(row) #adding each row from the database into a newly created list, info  
+    for row in actornames:
+        actorselection.append(row) #adding each row from the database into a newly created list, info  
     
-    for row in row2:
-        info2.append(row) #adding each row from the database into a newly created list, info 
+    for row in filmnames:
+        filmselection.append(row) #adding each row from the database into a newly created list, info 
 
-    return render_template("index.html", name="Home", info1=info, info2=info2)
+    return render_template("index.html", name="Home", actorselection=actorselection, filmselection=filmselection)
 
 
 @app.route('/home/actors/search', methods=['GET', 'POST']) # Delete function
@@ -53,31 +53,31 @@ def actors_search():
             cur = mysql.connection.cursor()
             cur.execute("select Film_Name from Films where Film_ID in (select FilmID from Film_Actor where ActorID=(SELECT Actor_ID from Actors WHERE Actor_Name=(%s)))", [actors])
             mysql.connection.commit()
-            rows = cur.fetchall() #built in function to return a tuple, list or dictionary
+            selectfilmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.execute("SELECT * FROM Actors")
             mysql.connection.commit()
-            row2 = cur.fetchall() #built in function to return a tuple, list or dictionary
+            actornames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.execute("SELECT * FROM Films")
             mysql.connection.commit()
-            row3 = cur.fetchall() #built in function to return a tuple, list or dictionary
+            filmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.close()
+
+            filmchoice = []
+
+            for row in selectfilmnames:
+                filmchoice.append(row) #adding each row from the database into a newly created list, info  
 
             filmselection = []
 
-            for row in rows:
-                filmselection.append(row) #adding each row from the database into a newly created list, info  
+            for row in filmnames:
+                filmselection.append(row) #adding each row from the database into a newly created list, info 
 
             actorselection = []
 
-            for row in row3:
-                actorselection.append(row) #adding each row from the database into a newly created list, info 
+            for row in actornames:
+                actorselection.append(row) #adding each row from the database into a newly created list, info  
 
-            info = []
-
-            for row in row2:
-                info.append(row) #adding each row from the database into a newly created list, info  
-
-            return render_template("index.html", name="Home", actor="Films starring "+actors+":", filmchoice=filmselection, info1=info, info2=actorselection)
+            return render_template("index.html", name="Home", actor="Films starring "+actors+":", filmchoice=filmchoice, actorselection=actorselection, filmselection=filmselection)
     return redirect(url_for('home'))
 
 
@@ -90,31 +90,31 @@ def films_search():
             cur = mysql.connection.cursor()
             cur.execute("select Actor_Name from Actors where Actor_ID in (select ActorID from Film_Actor where FilmID=(SELECT Film_ID from Films WHERE Film_Name=(%s)))", [films])
             mysql.connection.commit()
-            rows = cur.fetchall() #built in function to return a tuple, list or dictionary
+            selectactornames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.execute("SELECT * FROM Films")
             mysql.connection.commit()
-            row2 = cur.fetchall() #built in function to return a tuple, list or dictionary
+            filmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.execute("SELECT * FROM Actors")
             mysql.connection.commit()
-            row3 = cur.fetchall() #built in function to return a tuple, list or dictionary
+            actornames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.close()
 
+            actorchoice = []
+
+            for row in selectactornames:
+                actorchoice.append(row) #adding each row from the database into a newly created list, info  
+            
             actorselection = []
 
-            for row in rows:
-                actorselection.append(row) #adding each row from the database into a newly created list, info  
-            
+            for row in actornames:
+                actorselection.append(row) #adding each row from the database into a newly created list, info
+
             filmselection = []
 
-            for row in row3:
-                filmselection.append(row) #adding each row from the database into a newly created list, info
+            for row in filmnames:
+                filmselection.append(row) #adding each row from the database into a newly created list, info  
 
-            info = []
-
-            for row in row2:
-                info.append(row) #adding each row from the database into a newly created list, info  
-
-            return render_template("index.html", name="Home", film="Actors starring in "+films+":", actorchoice=actorselection, info2=info, info1=filmselection)
+            return render_template("index.html", name="Home", film="Actors starring in "+films+":", actorchoice=actorchoice, actorselection=actorselection, filmselection=filmselection)
     return redirect(url_for('home'))
 
 
@@ -128,31 +128,33 @@ def actor_film_associate():
             cur = mysql.connection.cursor()
             cur.execute("INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name=(%s)), (SELECT Actor_ID from Actors WHERE Actor_Name=(%s)));", [films, actors])
             mysql.connection.commit()
-            rows = cur.fetchall() #built in function to return a tuple, list or dictionary
+            cur.execute("select Actor_Name from Actors where Actor_ID in (select ActorID from Film_Actor where FilmID=(SELECT Film_ID from Films WHERE Film_Name=(%s)))", [films])
+            mysql.connection.commit()
+            selectactornames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.execute("SELECT * FROM Films")
             mysql.connection.commit()
-            row2 = cur.fetchall() #built in function to return a tuple, list or dictionary
+            filmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.execute("SELECT * FROM Actors")
             mysql.connection.commit()
-            row3 = cur.fetchall() #built in function to return a tuple, list or dictionary
+            actornames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.close()
 
+            actorchoice = []
+
+            for row in selectactornames:
+                actorchoice.append(row) #adding each row from the database into a newly created list, info  
+            
             actorselection = []
 
-            for row in rows:
-                actorselection.append(row) #adding each row from the database into a newly created list, info  
-            
+            for row in actornames:
+                actorselection.append(row) #adding each row from the database into a newly created list, info
+
             filmselection = []
 
-            for row in row3:
-                filmselection.append(row) #adding each row from the database into a newly created list, info
+            for row in filmnames:
+                filmselection.append(row) #adding each row from the database into a newly created list, info  
 
-            info = []
-
-            for row in row2:
-                info.append(row) #adding each row from the database into a newly created list, info  
-
-            #return render_template("index.html", name="Home", film="Actors starring in "+films+":", actorchoice=actorselection, info2=info, info1=filmselection)
+            return render_template("index.html", name="Home", film="Actors starring in "+films+":", actorchoice=actorchoice, actorselection=actorselection, filmselection=filmselection)
     return redirect(url_for('home'))
 
     
@@ -166,15 +168,15 @@ def actors():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM Actors")
     mysql.connection.commit()
-    rows = cur.fetchall() #built in function to return a tuple, list or dictionary
+    actornames = cur.fetchall() #built in function to return a tuple, list or dictionary
     cur.close()
 
-    info = []
+    actorselection = []
 
-    for row in rows:
-        info.append(row) #adding each row from the database into a newly created list, info  
+    for row in actornames:
+        actorselection.append(row) #adding each row from the database into a newly created list, info  
 
-    return render_template("actors.html", name="Actor Database", info1=info)
+    return render_template("actors.html", name="Actor Database", actorselection=actorselection)
 
 @app.route('/actors/create', methods=['GET', 'POST']) # Create function
 def actors_create():
@@ -236,15 +238,15 @@ def films():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM Films")
     mysql.connection.commit()
-    rows = cur.fetchall() #built in function to return a tuple, list or dictionary
+    filmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
     cur.close()
 
-    info = []
+    filmselection = []
 
-    for row in rows:
-        info.append(row) #adding each row from the database into a newly created list, info  
+    for row in filmnames:
+        filmselection.append(row) #adding each row from the database into a newly created list, info  
 
-    return render_template("films.html", name="Film Database", info1=info)
+    return render_template("films.html", name="Film Database", filmselection=filmselection)
 
 @app.route('/films/create', methods=['GET', 'POST']) # Create function
 def films_create():

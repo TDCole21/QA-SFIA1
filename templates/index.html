@@ -5,36 +5,30 @@
 <h1 align="center">{{name}} Page</h1>
 <p align="center">Welcome to this web app!</p>
 
-<form method="POST" action="{{url_for('actors_search')}}">
-    <!-- Activity <input type = "text" name= "activ" /> <br> -->
+<br><br>
+
+<form method="POST" action="{{ url_for('actor_film_search') }}">
     <center>
-    <H1>Select an Actor:</H1>
-        <select name= "actors">
-            <option >- Choose an Actor -</option>
-        {%for i in actorselection%}
-            <option >{{ i[1] }}</option>
-        {%endfor%}
-        </select>
+    <H1>View actors in a film, or films starring an actor</H1>
+    <label>Select a Film:</label>
+    <select name= "filmname">
+        <option >- Choose a Film -</option>
+    {%for i in filmselection%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
+    <label>or, select an Actor:</label>
+    <select name= "actorname">
+        <option >- Choose an Actor -</option>
+    {%for i in actorselection%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
     <input type = "submit">
     </center>
 </form>
 
-<form method="POST" action="{{url_for('films_search')}}">
-    <!-- Activity <input type = "text" name= "activ" /> <br> -->
-    <center>
-    <H1>Or, select a Film:</H1>
-        <select name= "films">
-            <option >- Choose a Film -</option>
-        {%for i in filmselection%}
-            <option >{{ i[1] }}</option>
-        {%endfor%}
-        </select>
-    <input type = "submit">
-    </center>
-</form>
-
-
-<p>Going to this page will test the CRUD functionalities</p>
+<br><br>
 
 <H2>{{actor}}</H2>
 {% for i in filmchoice %}
@@ -46,10 +40,11 @@
 <li><a>{{i[0]}}</a></li>  <!-- i.ID if used a dictionary instead of a list -->
 {% endfor %}
 
-
+<br><br>
 
 <form method="POST" action="{{ url_for('actor_film_associate') }}">
     <center>
+    <H1>Associate a Film to an Actor</H1>
     <label>Associate a Film:</label>
     <select name= "filmname">
         <option >- Choose a Film -</option>
@@ -67,6 +62,7 @@
     <input type = "submit">
     </center>
 </form>
+
 
 
 

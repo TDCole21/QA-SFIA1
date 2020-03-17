@@ -8,5 +8,10 @@ pipeline{
                 sh './script/installation.sh'
             }
         }
+        stage('Testing'){
+            steps{
+                sh 'pytest ./test.testing.py'
+            }
+        }
     }
 }

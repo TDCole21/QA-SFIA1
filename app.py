@@ -44,73 +44,57 @@ def home():
     return render_template("index.html", name="Home", actorselection=actorselection, filmselection=filmselection)
 
 
-@app.route('/home/actors/search', methods=['GET', 'POST']) # Delete function
-def actors_search():
+@app.route('/home/search', methods=['GET', 'POST']) # Delete function
+def actor_film_search():
     if request.method == "POST":
         details=request.form
-        actors=details['actors']
-        if actors != "- Choose an Actor -":
-            cur = mysql.connection.cursor()
-            cur.execute("select Film_Name from Films where Film_ID in (select FilmID from Film_Actor where ActorID=(SELECT Actor_ID from Actors WHERE Actor_Name=(%s)))", [actors])
-            mysql.connection.commit()
-            selectfilmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
-            cur.execute("SELECT * FROM Actors")
-            mysql.connection.commit()
-            actornames = cur.fetchall() #built in function to return a tuple, list or dictionary
-            cur.execute("SELECT * FROM Films")
-            mysql.connection.commit()
-            filmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
-            cur.close()
+        films=details['filmname']
+        actors=details['actorname']
 
-            filmchoice = []
-            filmselection = []
-            actorselection = []
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM Films")
+        mysql.connection.commit()
+        filmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
+        cur.execute("SELECT * FROM Actors")
+        mysql.connection.commit()
+        actornames = cur.fetchall() #built in function to return a tuple, list or dictionary
+        cur.close()
 
-            for row in selectfilmnames:
-                filmchoice.append(row) #adding each row from the database into a newly created list, info  
+        actorchoice = []
+        filmchoice = []
+        actorselection = []
+        filmselection = []
 
-            for row in filmnames:
-                filmselection.append(row) #adding each row from the database into a newly created list, info 
+        for row in actornames:
+            actorselection.append(row) #adding each row from the database into a newly created list, info
 
-            for row in actornames:
-                actorselection.append(row) #adding each row from the database into a newly created list, info  
+        for row in filmnames:
+            filmselection.append(row) #adding each row from the database into a newly created list, info 
 
-            return render_template("index.html", name="Home", actor="Films starring "+actors+":", filmchoice=filmchoice, actorselection=actorselection, filmselection=filmselection)
-    return redirect(url_for('home'))
-
-
-@app.route('/home/films/search', methods=['GET', 'POST']) # Delete function
-def films_search():
-    if request.method == "POST":
-        details=request.form
-        films=details['films']
-        if films != "- Choose a Film -":
+        if films != "- Choose a Film -" and actors == "- Choose an Actor -":
             cur = mysql.connection.cursor()
             cur.execute("select Actor_Name from Actors where Actor_ID in (select ActorID from Film_Actor where FilmID=(SELECT Film_ID from Films WHERE Film_Name=(%s)))", [films])
             mysql.connection.commit()
             selectactornames = cur.fetchall() #built in function to return a tuple, list or dictionary
-            cur.execute("SELECT * FROM Films")
-            mysql.connection.commit()
-            filmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
-            cur.execute("SELECT * FROM Actors")
-            mysql.connection.commit()
-            actornames = cur.fetchall() #built in function to return a tuple, list or dictionary
             cur.close()
-
-            actorchoice = []
-            actorselection = []
-            filmselection = []
-
+        
             for row in selectactornames:
                 actorchoice.append(row) #adding each row from the database into a newly created list, info  
 
-            for row in actornames:
-                actorselection.append(row) #adding each row from the database into a newly created list, info
-
-            for row in filmnames:
-                filmselection.append(row) #adding each row from the database into a newly created list, info  
-
             return render_template("index.html", name="Home", film="Actors starring in "+films+":", actorchoice=actorchoice, actorselection=actorselection, filmselection=filmselection)
+        
+        elif films == "- Choose a Film -" and actors != "- Choose an Actor -":
+            cur = mysql.connection.cursor()
+            cur.execute("select Film_Name from Films where Film_ID in (select FilmID from Film_Actor where ActorID=(SELECT Actor_ID from Actors WHERE Actor_Name=(%s)))", [actors])
+            mysql.connection.commit()
+            selectfilmnames = cur.fetchall() #built in function to return a tuple, list or dictionary
+            cur.close()
+
+            for row in selectfilmnames:
+                filmchoice.append(row) #adding each row from the database into a newly created list, info 
+
+            return render_template("index.html", name="Home", actor="Films starring "+actors+":", filmchoice=filmchoice, actorselection=actorselection, filmselection=filmselection)
+
     return redirect(url_for('home'))
 
 
@@ -151,7 +135,21 @@ def actor_film_associate():
             return render_template("index.html", name="Home", film="Actors starring in "+films+":", actorchoice=actorchoice, actorselection=actorselection, filmselection=filmselection)
     return redirect(url_for('home'))
 
+
+@app.route('/home/actor/dissociate', methods=['GET', 'POST']) # Delete function
+def actors_dissociate():
+    if request.method == "POST":
+        details=request.form
+        actors=details['actors']
+        if actors != "- Choose an Actor -":
+            cur=mysql.connection.cursor()
+            cur.execute("DELETE Actors, Film_Actor FROM Actors INNER JOIN Film_Actor ON Actors.Actor_ID = Film_Actor.ActorID WHERE Actors.Actor_Name=(%s)", [actors])
+            mysql.connection.commit()
+            cur.close()
     
+    return redirect(url_for('actors'))
+
+
 
 ######################################################################################################################################################################
 ###########################################################################     ACTORS     ###########################################################################

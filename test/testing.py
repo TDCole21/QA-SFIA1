@@ -1,17 +1,17 @@
 import urllib3
 
-from flask import Flask
-from flask_mysqldb import MySQL
-import os
+# from flask import Flask
+# from flask_mysqldb import MySQL
+# import os
 
-app=Flask(__name__)
+# app=Flask(__name__)
 
-mysql=MySQL(app)
+# mysql=MySQL(app)
 
-app.config['MYSQL_HOST']=os.environ['MYSQLHOST']
-app.config['MYSQL_USER']=os.environ['MYSQLUSER']
-app.config['MYSQL_PASSWORD']=os.environ['MYSQLPASSWORD']
-app.config['MYSQL_DB']=os.environ['MYSQLDB']
+# app.config['MYSQL_HOST']=os.environ['MYSQLHOST']
+# app.config['MYSQL_USER']=os.environ['MYSQLUSER']
+# app.config['MYSQL_PASSWORD']=os.environ['MYSQLPASSWORD']
+# app.config['MYSQL_DB']=os.environ['MYSQLDB']
 
 
 

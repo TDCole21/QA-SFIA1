@@ -402,6 +402,7 @@ def actors_delete():
             cur.close()
     
     return redirect(url_for('actors'))
+
     
  
 
@@ -471,6 +472,7 @@ def films_delete():
             cur.close()
     
     return redirect(url_for('films'))
+
  
 
 @app.route('/films/update', methods=['GET', 'POST']) # Update function
@@ -486,6 +488,24 @@ def films_update():
             mysql.connection.commit()
             cur.close()
 
+    return redirect(url_for('films'))
+
+@app.route('/films/update/many', methods=['GET', 'POST']) # Delete function
+def films_update_many():
+    if request.method == "POST":
+        details=request.form
+        fromname=details['initialname']
+        toname=details['finalname']
+        if films != "":
+            x=re.split("\s*;\s*", films)
+            cur = mysql.connection.cursor()
+            for i in range(len(x)):
+                n = re.sub("^\s*", "", x[i])
+                cur.execute("DELETE Films, Film_Actor FROM Films INNER JOIN Film_Actor ON Films.Film_ID = Film_Actor.FilmID WHERE Films.Film_Name=(%s)", [n]) #deletes film from both tables
+                cur.execute("DELETE FROM Films where Film_Name=(%s)", [n]) #deletes films that aren't in the joining table
+            mysql.connection.commit()
+            cur.close()
+    
     return redirect(url_for('films'))
 
 

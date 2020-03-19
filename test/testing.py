@@ -14,6 +14,7 @@ import urllib3
 # app.config['MYSQL_DB']=os.environ['MYSQLDB']
 
 
+
 def test_homepage():                                                        #tests if page exists(homepage)
     http=urllib3.PoolManager()
     r = http.request('GET', 'http://localhost:5000/')

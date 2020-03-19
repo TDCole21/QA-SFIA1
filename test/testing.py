@@ -35,7 +35,6 @@ def test_nonpage():                                                         #tes
     r=http.request('GET', 'http://35.197.207.209:5000/About')
     assert 404  == r.status
 
-
 def test_select():                                               #select test
     with app.app_context():
         cur= mysql.connection.cursor()

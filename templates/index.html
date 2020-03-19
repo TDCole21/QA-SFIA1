@@ -63,8 +63,69 @@
     </center>
 </form>
 
+<form method="POST" action="{{ url_for('actor_film_dissociate') }}">
+    <center>
+    <H1>Dissociate a Film from an Actor</H1>
+    <label>Dissociate a Film:</label>
+    <select name= "filmname">
+        <option >- Choose a Film -</option>
+    {%for i in filmselection%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
+    <label>from an Actor:</label>
+    <select name= "actorname">
+        <option >- Choose an Actor -</option>
+    {%for i in actorselection%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
+    <input type = "submit">
+    </center>
+</form>
 
 
+<form method="POST" action="{{ url_for('actors_delete_all') }}">
+    <center>
+    <H1>Delete all Films staring this Actor</H1>
+    </select>
+    <label>Select an Actor:</label>
+    <select name= "actorname">
+        <option >- Choose an Actor -</option>
+    {%for i in actorselection%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
+    <input type = "submit">
+    </center>
+</form>
+
+<form method="POST" action="{{ url_for('films_delete_all') }}">
+    <center>
+    <H1>Delete all Actors staring in this Films</H1>
+    </select>
+    <label>Select a Film:</label>
+    <select name= "filmname">
+        <option >- Choose a Film -</option>
+    {%for i in filmselection%}
+        <option >{{ i[1] }}</option>
+    {%endfor%}
+    </select>
+    <input type = "submit">
+    </center>
+</form>
+
+
+<form method="POST" action="{{ url_for('add_many') }}">
+    <center>
+    <H1>Add many actors to many films <font size="2">(separate with a semicolon)</font></H1>
+    <label>Add a Film:</label>
+    <input type = "text" name= "filmname" />
+    <label>Add an Actor:</label>
+    <input type = "text" name= "actorname" />
+    <input type = "submit">
+    </center>
+</form>
 
 </div>
 {%endblock%}

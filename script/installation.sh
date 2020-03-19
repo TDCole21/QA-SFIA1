@@ -1,9 +1,19 @@
 #!/bin/bash
-source venv/bin/activate
+source /var/lib/jenkins/workspace/pipeline1/venv/bin/activate #change pipeline name
 pip3 install flask
 pip3 install flask_mysqldb
 pip3 install pytest
 pip3 install pytest-base-url
 pip3 install urllib3
-source ~/.bashrc
-python3 app.py
+pip3 install coverage
+source /var/lib/jenkins/.bashrc
+python3 /var/lib/jenkins/workspace/pipeline1/app.py
+
+
+
+
+
+# Old Code
+# source venv/bin/activate
+# source ~/.bashrc
+# python3 app.py

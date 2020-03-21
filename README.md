@@ -46,15 +46,17 @@ The Minimum Viable Product (MVP) for the project has the following requirements:
 
 ### Tech Stack Requirements <a name="tech_stack"></a>
 The Tech Stack requirements are the following:
-+ Kanban Board: Trello
-+ Database: Google Cloud Platform (GCP) SQL Server
-+ Programming language: Python
-+ Unit Testing with Python: Pytest
-+ Integration Testing with Python: Unit, Database
-+ Front-end: Flask and HTML
-+ Version Control System (VCS): Git
-+ CI Server: Jenkins
-+ Cloud server: GCP Compute Engine
+|Technology Required||Used in this project|
+|---|---|
+|Kanban Board|Trello|
+|Database|Google Cloud Platform (GCP) SQL Server|
+|Programming language|Python (including MySQL)|
+|Unit Testing with Python|Pytest|
+|Integration Testing with Python|Unit, Database|
+|Front-end|Flask (including Jinja2) and HTML (including CSS and Bootstrap)|
+|Version Control System (VCS)|Git|
+|CI Server|Jenkins|
+|Cloud server|GCP Compute Engine|
 
 ## Project Management <a name="project_management"></a>
 This section will detail the project management tools and techniques used to plan the project, and how they were utilised and adapted throughout the project.
@@ -104,20 +106,24 @@ Any implemented feature that negatively effected the performance of the applicat
 ### Multi Tier Architecture Diagram <a name="multi_tier_architecture_diagram"></a>
 
 ## Testing <a name="testing"></a>
-The first paragraph text
+I used both Pytest and a Coverage report to test my application
 
-### Report <a name="report"></a>
+### Pytest <a name="pytest"></a>
+
+### Coverage Report <a name="coverage_report"></a>
 
 ## Deployment <a name="deployment"></a>
-The first paragraph text
+Once I have edited my code in Visual Code, I push the changes up to my developer branch on GitHub. Once a feature has been completed, I merge the developer branch into the master branch which activates a GitHub webhook with my Jenkins CI server. Jenkins can then deploy the app as a service. With the use of the Pipeline, Jenkins is able to install all the necessary packages needed to run the application, wait for the packages to be installed, deploy the application as a service and finally perform the tests mentioned in the section above. The results of these tests are printed in the console output of Jenkis, giving the user the ability to improve the testing stage if results are not satisfactory.
 
-### Technologies Used <a name="technologies_used"></a>
+### Branch Merge
+At the start of the project I had a single branch on my version control; the master branch.
+Once I had a functioning application running on a server and could be accessed through port 5000, I used git checkout -b developer to create a new developer branch from which all changes would be made too before merging with the master branch after a task had been placed into "done" on my kanban board.
 
 ## Front End Design <a name="front_end_design"></a>
 The first paragraph text
 
 ## Improvements for the Future <a name="improvements_for_the_future"></a>
-If I had more time dedicated to this project I would have liked to have implemented the following:
+If I had more time dedicated to this project I would have implemented the following:
 + **A User/Developer log-in feature:**
 This would have allowed for the Developer profiles to have have full access to the film and actors database, allowing them full CRUD functionalities.
 The User profiles would have only been permitted to view the databases, and searched for which actors/films they would have wanted to see. Maybe even a request feature, so that they could suggests additions/updates/removals to the database.
@@ -131,7 +137,9 @@ My testing protocol only included unit and database testing. Had more time been 
 My project uses a many-to-many relationship between two tables. However, given more time, I would have prioritised including new tables such as directors, which would have shown much greater understanding of the material covered.
 Also included would have been more columns in the tables, genres for example, which would have allowed for more features on the the application.
 + **More CRUD Functionalities:**
-Although, I included a diverse amount of CRUD functionalities in my project, there were more to be tested. An update many to many relationship for example. Or to have implemented a multi-select drop down list, instead of either text boxes or single-select dropdown lists. 
+Although, I included a diverse amount of CRUD functionalities in my project, there were more to be tested. An update many to many relationship for example, or a multi-select drop down list instead of either text boxes or single-select dropdown lists. 
++ **Complex Version Control Branch Model:**
+I only used two branches in my project; a master branch and developer branch. To help prepare better for best practice in industry, I would have further branches underneath the developer branch for each product backlog then further branches for the sprint backlogs and then again for the tasks.
 
 
 ## Authors <a name="authors"></a>

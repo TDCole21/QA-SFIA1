@@ -82,7 +82,7 @@ Any implemented feature that negatively effected the performance of the applicat
 
 #### Initial Plan
 
-![Initial Kanban board designed with Trello.](https://imgur.com/LAkh6i3)
+![Initial Kanban board designed with Trello.](https://i.imgur.com/LAkh6i3.jpg)
 
 
 #### Dynamic Updates

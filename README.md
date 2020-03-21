@@ -46,7 +46,7 @@ The Minimum Viable Product (MVP) for the project has the following requirements:
 
 ### Tech Stack Requirements <a name="tech_stack"></a>
 The Tech Stack requirements are the following:
-|Technology Required||Used in this project|
+|Technology Required|Used in this project|
 |---|---|
 |Kanban Board|Trello|
 |Database|Google Cloud Platform (GCP) SQL Server|

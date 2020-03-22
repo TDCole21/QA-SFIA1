@@ -87,33 +87,51 @@ Any implemented feature that negatively effected the performance of the applicat
 ![Initial Kanban board designed with Trello.](https://i.imgur.com/LAkh6i3.jpg)
 
 
-#### Dynamic Updates
+<!-- #### Dynamic Updates
 
-+ TBA
++ TBA -->
 
 #### Final Board
 
+![Initial Kanban board designed with Trello.](https://i.imgur.com/kyWnBiT.png)
 
 
 
+## Entity Relationship Diagrams (ERD) <a name="entity_relationship_diagrams"></a>
+I used an ERD to help draft my database. I opted for the MoSCow Prioritisation Method, so that I could aim for a MVP without losing focus.
 
+![ERD designed with draw.io](https://i.imgur.com/HLg5EdF.png)
 
+As shown in my ERD, my priority was to have two tables Films and Actors, with a many-to-many relationship. This relationship would require a joining table to house the foreign keys which I called film_actor.
+Time-permitted, I would expand on the Films table and create a new tables, Directors, which would have a one-to-many relationship with the Films table.
 
+## Risk Assessment <a name="risk_assessment"></a>
+|Risk ID|Description|Likelihood (1 -> 10)|Impact (1->10)|Consequence|Response Strategy|
+|---|---|---|---|---|---|---|
+|1.1|Loss of content|4|8|Potential loss of large sections of the project, resulting in setbacks|Using the branch feature in git, and ensuring a frequently updated branch method|
+|1.2|GCP (Google Cloud Processing) budget limit exceeded|1|1|Personal financial cost, whilst minimal setback to project progress|Google provides $300 initial budget for all users, and disables the autopayment if the allowance runs out. To prevent this from becoming a problem, I have to ensure that feature doesn't become enabled, and to keep an eye on my remaining budget.|
+|2.1|Time mismanagement|5|8|Falling behind on tasks means rushing on certain aspects of the project and can result in a lower quality of work.|Using methods such as a trello board and gantt chart to track my progress and ensure I don't fall behind on my work. If my work starts to fall behind, I can work on my project before/after training hours. |
+|2.2|Lack of content knowledge|5|7|A lack of understanding of the content covered in the academy will mean that I am unable to fulfill requirements needed for the project.||
+|||||||
 
-
-### Entity Relationship Diagrams <a name="entity_relationship_diagrams"></a>
-
-### Multi Tier Architecture Diagram <a name="multi_tier_architecture_diagram"></a>
 
 ## Testing <a name="testing"></a>
 I used both Pytest and a Coverage report to test my application
 
 ### Pytest <a name="pytest"></a>
+![URL Pytest](https://i.imgur.com/n6F40E9.png)
+
+![DB Pytest](https://i.imgur.com/bZx7pbh.png)
 
 ### Coverage Report <a name="coverage_report"></a>
+![URL Coverage Report](https://i.imgur.com/3xG6z5u.png)
+
+![DB Coverage Report](https://i.imgur.com/5mBhoLU.png)
 
 ## Deployment <a name="deployment"></a>
 Once I have edited my code in Visual Code, I push the changes up to my developer branch on GitHub. Once a feature has been completed, I merge the developer branch into the master branch which activates a GitHub webhook with my Jenkins CI server. Jenkins can then deploy the app as a service. With the use of the Pipeline, Jenkins is able to install all the necessary packages needed to run the application, wait for the packages to be installed, deploy the application as a service and finally perform the tests mentioned in the section above. The results of these tests are printed in the console output of Jenkis, giving the user the ability to improve the testing stage if results are not satisfactory.
+
+![Deployment Architecture designed with Google Drawings](https://i.imgur.com/2f7vt4V.png)
 
 ### Branch Merge
 At the start of the project I had a single branch on my version control; the master branch.

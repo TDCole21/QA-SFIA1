@@ -106,6 +106,10 @@ As shown in my ERD, my priority was to have two tables Films and Actors, with a 
 Time-permitted, I would expand on the Films table and create a new tables, Directors, which would have a one-to-many relationship with the Films table.
 
 ## Risk Assessment <a name="risk_assessment"></a>
+The Risk Analysis categories are: Risk ID, Description, Likelihood, Impact, Consequence and Response Strategy.
+The Risk Management categories are: Response Strategy.
+Risk IDs 1.X are Operational Risks and 2.X are Objective Risks.
+
 |Risk ID|Description|Likelihood (1 -> 10)|Impact (1->10)|Consequence|Response Strategy|
 |---|---|---|---|---|---|
 |1.1|Loss of content|4|8|Potential loss of large sections of the project, resulting in setbacks|Using the branch feature in git, and ensuring a frequently updated branch method|
@@ -138,7 +142,15 @@ At the start of the project I had a single branch on my version control; the mas
 Once I had a functioning application running on a server and could be accessed through port 5000, I used git checkout -b developer to create a new developer branch from which all changes would be made too before merging with the master branch after a task had been placed into "done" on my kanban board.
 
 ## Front End Design <a name="front_end_design"></a>
-The first paragraph text
+As mentioned previously, the design aspect of the site was not of importance in this project.
+Instead, my aim was to make the CRUD functionalities as easy as possible for the User.
+My home page has a majority of the many to many CRUD functionalities and the Actors and Films pages are for single database manipulation.
+
+![Home page](https://i.imgur.com/VnBPWtT.png)
+
+![Actors page](https://i.imgur.com/2f7vt4V.png)
+
+![Films page](https://i.imgur.com/2f7vt4V.png)
 
 ## Improvements for the Future <a name="improvements_for_the_future"></a>
 If I had more time dedicated to this project I would have implemented the following:

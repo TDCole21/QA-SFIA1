@@ -20,7 +20,7 @@ INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Star 
 INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Avengers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Samuel L. Jackson'));
 INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Dark Knight'), (SELECT Actor_ID from Actors WHERE Actor_Name='Morgan Freeman'));
 INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Toy Story 3'), (SELECT Actor_ID from Actors WHERE Actor_Name='Tom Hanks'));
-INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Avengers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Robert Downey, Jr.'));
+INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='The Avengers'), (SELECT Actor_ID from Actors WHERE Actor_Name='Robert Downey'));
 INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Shrek 2'), (SELECT Actor_ID from Actors WHERE Actor_Name='Eddie Murphy'));
 INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='War of the Worlds'), (SELECT Actor_ID from Actors WHERE Actor_Name='Tom Cruise'));
 INSERT INTO Film_Actor VALUES ((SELECT Film_ID from Films WHERE Film_Name='Dead Man\'s Chest'), (SELECT Actor_ID from Actors WHERE Actor_Name='Johnny Depp'));

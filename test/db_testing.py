@@ -127,6 +127,7 @@ def test_create_films():
         cur.close()
         assert abs(start - end) == 1
 
+
 def test_films_coherence():
     with app.app_context():
         cur = mysql.connection.cursor()

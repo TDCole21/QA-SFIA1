@@ -107,7 +107,7 @@ Time-permitted, I would expand on the Films table and create a new tables, Direc
 
 ## Risk Assessment <a name="risk_assessment"></a>
 |Risk ID|Description|Likelihood (1 -> 10)|Impact (1->10)|Consequence|Response Strategy|
-|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 |1.1|Loss of content|4|8|Potential loss of large sections of the project, resulting in setbacks|Using the branch feature in git, and ensuring a frequently updated branch method|
 |1.2|GCP (Google Cloud Processing) budget limit exceeded|1|1|Personal financial cost, whilst minimal setback to project progress|Google provides $300 initial budget for all users, and disables the autopayment if the allowance runs out. To prevent this from becoming a problem, I have to ensure that feature doesn't become enabled, and to keep an eye on my remaining budget.|
 |2.1|Time mismanagement|5|8|Falling behind on tasks means rushing on certain aspects of the project and can result in a lower quality of work.|Using methods such as a trello board and gantt chart to track my progress and ensure I don't fall behind on my work. If my work starts to fall behind, I can work on my project before/after training hours. |

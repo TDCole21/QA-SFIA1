@@ -51,8 +51,7 @@ def test_update():                                              #delete test
         cur= mysql.connection.cursor()
         cur.execute('SELECT * FROM Actors')                   #tests made on the table used for CRUD
         num_of_records=cur.fetchall()
-        lastID=int(num_of_records[len(num_of_records)-1][0])
-        cur.execute("UPDATE Actors SET Actor_Name=(%s) WHERE Actor_ID=(%d)", ['test', lastID])  #inserts at an autoincrement ID the value 'test'
+        cur.execute("UPDATE Actors SET Actor_Name=(%s) WHERE Actor_ID=(%s)", ['test', int(num_of_records[len(num_of_records)-1][0])])  #inserts at an autoincrement ID the value 'test'
         mysql.connection.commit()
         cur.execute('SELECT * FROM Actors')
         new_num_records=cur.fetchall()

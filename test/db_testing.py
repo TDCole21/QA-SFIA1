@@ -11,6 +11,10 @@ app.config['MYSQL_USER']=os.environ['MYSQLUSER']
 app.config['MYSQL_PASSWORD']=os.environ['MYSQLPASSWORD']
 app.config['MYSQL_DB']=os.environ['MYSQLDB']
 
+######################################################################################################################################################################
+#########################################################################     CRUD TESTS     #########################################################################
+######################################################################################################################################################################
+
 
 def test_select():                                               #select test
     with app.app_context():
@@ -59,256 +63,100 @@ def test_update():                                              #delete test
     assert num_of_records[len(num_of_records)-1] != new_num_records[len(new_num_records)-1]
 
 
-##################################################################################################################################################################
-########################################################################     NEW TEST     ########################################################################
-##################################################################################################################################################################
+#####################################################################################################################################################################
+########################################################################     TABLE TESTS     ########################################################################
+#####################################################################################################################################################################
 
-# def test_empty():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("SELECT concat('DROP TABLE IF EXISTS `', table_name, '`;') FROM information_schema.tables WHERE table_schema = 'SFIA1';")
-#         drops = cur.fetchall()
-#         mysql.connection.commit()
-#         cur.execute("SET FOREIGN_KEY_CHECKS = 0")
-#         mysql.connection.commit()
-#         for drop in drops:
-#             cur.execute(drop[0])
-#             mysql.connection.commit()
-#         cur.execute("SET FOREIGN_KEY_CHECKS = 1")
-#         mysql.connection.commit()
-#         cur.execute("SHOW tables;")
-#         empty = len(cur.fetchall())+1
-#         mysql.connection.commit()
-#         cur.close()
-#         assert empty
+def test_empty():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT concat('DROP TABLE IF EXISTS `', table_name, '`;') FROM information_schema.tables WHERE table_schema = 'SFIA1';")
+        drops = cur.fetchall()
+        mysql.connection.commit()
+        cur.execute("SET FOREIGN_KEY_CHECKS = 0")
+        mysql.connection.commit()
+        for drop in drops:
+            cur.execute(drop[0])
+            mysql.connection.commit()
+        cur.execute("SET FOREIGN_KEY_CHECKS = 1")
+        mysql.connection.commit()
+        cur.execute("SHOW tables;")
+        empty = len(cur.fetchall())+1
+        mysql.connection.commit()
+        cur.close()
+        assert empty
 
-# def test_create_recipes():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("DROP TABLE IF EXISTS test_recipes;")
-#         mysql.connection.commit()
-#         cur.execute("SHOW tables;")
-#         start = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.execute("CREATE TABLE test_recipes(id INT(5) NOT NULL AUTO_INCREMENT,recipe_name VARCHAR(50) NOT NULL UNIQUE,recipe_method VARCHAR(10000) NOT NULL,PRIMARY KEY(id));")
-#         mysql.connection.commit()
-#         cur.execute("SHOW tables;")
-#         end = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert abs(start - end) == 1
+def test_create_actors():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute("DROP TABLE IF EXISTS Actors;")
+        mysql.connection.commit()
+        cur.execute("SHOW tables;")
+        start = len(cur.fetchall())
+        mysql.connection.commit()
+        cur.execute("CREATE TABLE Actors (Actor_ID INT(3) AUTO_INCREMENT NOT NULL PRIMARY KEY, Actor_Name VARCHAR(50) UNIQUE NOT NULL);")
+        mysql.connection.commit()
+        cur.execute("SHOW tables;")
+        end = len(cur.fetchall())
+        mysql.connection.commit()
+        cur.close()
+        assert abs(start - end) == 1
 
-# def test_recipes_coherence():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("DESCRIBE test_recipes;")
-#         col = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert col == 3
+def test_actors_coherence():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute("DESCRIBE actors;")
+        col = len(cur.fetchall())
+        mysql.connection.commit()
+        cur.close()
+        assert col == 2
 
-# def test_create_ingredients():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("DROP TABLE IF EXISTS test_ingredients;")
-#         mysql.connection.commit()
-#         cur.execute("SHOW tables;")
-#         start = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.execute("CREATE TABLE test_ingredients(id INT(5) NOT NULL AUTO_INCREMENT, ingredient_name VARCHAR(30) NOT NULL UNIQUE, ingredient_type VARCHAR(10) NOT NULL, PRIMARY KEY(id));")
-#         mysql.connection.commit()
-#         cur.execute("SHOW tables;")
-#         end = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert abs(start - end) == 1
+def test_create_films():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute("DROP TABLE IF EXISTS Films;")
+        mysql.connection.commit()
+        cur.execute("SHOW tables;")
+        start = len(cur.fetchall())
+        mysql.connection.commit()
+        cur.execute("CREATE TABLE Films (Film_ID INT(3) AUTO_INCREMENT NOT NULL PRIMARY KEY, Film_Name VARCHAR(50) UNIQUE NOT NULL);")
+        mysql.connection.commit()
+        cur.execute("SHOW tables;")
+        end = len(cur.fetchall())
+        mysql.connection.commit()
+        cur.close()
+        assert abs(start - end) == 1
 
-# def test_ingredients_coherence():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("DESCRIBE test_ingredients;")
-#         col = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert col == 3
+def test_films_coherence():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute("DESCRIBE films;")
+        col = len(cur.fetchall())
+        mysql.connection.commit()
+        cur.close()
+        assert col == 2
 
-# def test_create_recipe_ingredients():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("DROP TABLE IF EXISTS test_recipe_ingredients;")
-#         mysql.connection.commit()
-#         cur.execute("SHOW tables;")
-#         start = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.execute("CREATE TABLE test_recipe_ingredients(id INT(5) NOT NULL AUTO_INCREMENT,recipe_id INT(5) NOT NULL,ingredient_id INT(5) NOT NULL,PRIMARY KEY(id),FOREIGN KEY(recipe_id) REFERENCES test_recipes(id),FOREIGN KEY(ingredient_id) REFERENCES test_ingredients(id));")
-#         mysql.connection.commit()
-#         cur.execute("SHOW tables;")
-#         end = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert abs(start - end) == 1
+def test_create_film_actor():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute("DROP TABLE IF EXISTS Film_Actor;")
+        mysql.connection.commit()
+        cur.execute("SHOW tables;")
+        start = len(cur.fetchall())
+        mysql.connection.commit()
+        cur.execute("CREATE TABLE Film_Actor (FilmID INT(3), ActorID INT(3), FOREIGN KEY(FilmID) REFERENCES Films (Film_ID) ON DELETE CASCADE, FOREIGN KEY(ActorID) REFERENCES Actors(Actor_ID) ON DELETE CASCADE);")
+        mysql.connection.commit()
+        cur.execute("SHOW tables;")
+        end = len(cur.fetchall())
+        mysql.connection.commit()
+        cur.close()
+        assert abs(start - end) == 1
 
-# def test_recipe_ingredients_coherence():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("DESCRIBE test_recipe_ingredients;")
-#         col = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert col == 3
-
-# def test_recipe_insert():
-#     recipe_name = "Placeholder"
-#     recipe_method = "Place your holder"
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("SELECT * FROM test_recipes;")
-#         start = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.execute("INSERT IGNORE INTO test_recipes(recipe_name, recipe_method) VALUES (%s, %s)", (recipe_name, recipe_method))
-#         mysql.connection.commit()
-#         cur.execute("SELECT * FROM test_recipes")
-#         end = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert abs(start - end) == 1
-
-# def test_ingredient_insert():
-#     ingredient_name = "Placeholder"
-#     ingredient_type = "Spice"
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("SELECT * FROM test_ingredients;")
-#         start = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.execute("INSERT IGNORE INTO test_ingredients(ingredient_name, ingredient_type) VALUES (%s, %s)", (ingredient_name, ingredient_type))
-#         mysql.connection.commit()
-#         cur.execute("SELECT * FROM test_ingredients")
-#         end = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert abs(start - end) == 1
-
-# def test_recipe_unique():
-#     recipe_name = "Placeholder"
-#     recipe_method = "Place your holder"
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("SELECT * FROM test_recipes;")
-#         start = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.execute("INSERT IGNORE INTO test_recipes(recipe_name, recipe_method) VALUES (%s, %s)", (recipe_name, recipe_method))
-#         mysql.connection.commit()
-#         cur.execute("SELECT * FROM test_recipes")
-#         end = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert abs(start - end) == 0
-
-# def test_ingredient_unique():
-#     ingredient_name = "Placeholder"
-#     ingredient_type = "Spice"
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("SELECT * FROM test_ingredients;")
-#         start = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.execute("INSERT IGNORE INTO test_ingredients(ingredient_name, ingredient_type) VALUES (%s, %s)", (ingredient_name, ingredient_type))
-#         mysql.connection.commit()
-#         cur.execute("SELECT * FROM test_ingredients")
-#         end = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert abs(start - end) == 0
-
-# def test_recipe_ingredients_insert():
-#     name = "Placeholder"
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("SELECT * FROM test_recipe_ingredients;")
-#         start = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.execute("SELECT id FROM test_recipes WHERE recipe_name = (%s)", [name])
-#         recipe = cur.fetchall()
-#         mysql.connection.commit()
-#         cur.execute("SELECT id FROM test_ingredients WHERE ingredient_name = (%s)", [name])
-#         ingredient = cur.fetchall()
-#         mysql.connection.commit()
-#         cur.execute("INSERT IGNORE INTO test_recipe_ingredients(recipe_id, ingredient_id) VALUES (%s, %s)", (recipe, ingredient))
-#         mysql.connection.commit()
-#         cur.execute("SELECT * FROM test_recipe_ingredients;")
-#         end = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert abs(start - end) == 1
-
-# def test_browse():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("SELECT recipe_name, recipe_method FROM test_recipes")
-#         rows = cur.fetchall()
-#         mysql.connection.commit()
-#         recipes = {}
-#         for row in rows:
-#             recipes[row[0]]=[row[1]]
-#             cur.execute("SELECT ingredient_name FROM test_recipes r JOIN test_recipe_ingredients r_i ON r.id=r_i.recipe_id JOIN test_ingredients i ON i.id=r_i.ingredient_id WHERE r.recipe_name=%s;", [row[0]])
-#             ingredients = cur.fetchall()
-#             for i in ingredients:
-#                 recipes[row[0]].append(i[0])
-#             mysql.connection.commit()
-#         index = [name for name in recipes]
-#         cur.close()
-#         assert len(index) == 1 and len(recipes["Placeholder"]) == 2
-
-# def test_recipe_rename():
-#     recipe_name = "Placeholder"
-#     new_name = "place_holder"
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("UPDATE test_recipes SET recipe_name = (%s) WHERE recipe_name = (%s);", (new_name, recipe_name))
-#         mysql.connection.commit()
-#         cur.execute("SELECT * FROM test_recipes WHERE recipe_name = (%s);", [new_name])
-#         result = len(cur.fetchall())
-#         mysql.connection.commit()
-#         cur.close()
-#         assert result == 1
-
-# def test_conflict_deletion():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         try:
-#             cur.execute("DELETE FROM test_ingredients WHERE ingredient_name = 'Placeholder'")
-#             deleted = len(cur.fetchall())
-#             mysql.connection.commit()
-#             cur.close()
-#         except:
-#             deleted = False
-#         assert deleted == 0
-
-# def test_clean_ingredient_deletion():
-#     ingredient_name = "Placeholder"
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("SELECT id FROM test_ingredients WHERE ingredient_name = (%s)", [ingredient_name])
-#         ingredient_id = cur.fetchall()
-#         mysql.connection.commit()
-#         cur.execute("DELETE IGNORE FROM test_recipe_ingredients WHERE ingredient_id = (%s);", [ingredient_id])
-#         mysql.connection.commit()
-#         cur.execute("DELETE FROM test_ingredients WHERE ingredient_name = (%s);", [ingredient_name])
-#         mysql.connection.commit()
-#         cur.execute("SELECT * FROM test_ingredients;")
-#         deleted = len(cur.fetchall()) + 1
-#         mysql.connection.commit()
-#         cur.close()
-#         assert deleted
-
-# def test_recipe_deletion():
-#     with app.app_context():
-#         cur = mysql.connection.cursor()
-#         cur.execute("DELETE IGNORE FROM test_recipes WHERE recipe_name = 'place_holder';")
-#         mysql.connection.commit()
-#         cur.execute("SELECT * FROM test_recipes;")
-#         deleted = len(cur.fetchall()) + 1
-#         mysql.connection.commit()
-#         cur.close()
-#         assert deleted
+def test_recipe_ingredients_coherence():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute("DESCRIBE Film_Actor;")
+        col = len(cur.fetchall())
+        mysql.connection.commit()
+        cur.close()
+        assert col == 2

@@ -3,6 +3,7 @@ pipeline{
     stages{
         stage('Development Environment'){
             steps{
+                sh 'echo "pre-install and install"'
                 sh 'chmod 775 ./script/*'
                 sh './script/before_installation.sh'
                 sh './script/make_service.sh'
@@ -15,9 +16,18 @@ pipeline{
                
             }
         }
-        stage('Testing') {
+        stage('URL Testing') {
             steps {
-                sh './script/testing.sh'
+                sh 'echo "test page availability and status"'
+                sh './script/url_testing.sh'
+
+            }
+        }
+
+        stage('DB Testing') {
+            steps {
+                sh 'echo "test database structure and connection"'
+                sh './script/db_testing.sh'
 
             }
         }

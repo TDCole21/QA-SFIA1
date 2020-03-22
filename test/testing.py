@@ -20,20 +20,20 @@ def test_homepage():                                                        #tes
     r = http.request('GET', 'http://35.242.157.109:5000/home')
     assert 200 == r.status #200 is successful connection
 
-# def test_activities():                                                      #tests if page exists(Activities)
-#     http=urllib3.PoolManager()
-#     r=http.request('GET', 'http://35.197.207.209:5000/Activities')
-#     assert 200  == r.status
+def test_actors():                                                      #tests if page exists(Activities)
+    http=urllib3.PoolManager()
+    r=http.request('GET', 'http://35.242.157.109:5000/actors')
+    assert 200  == r.status
 
-# def test_location():                                                        #tests if page exists(Locations)
-#     http=urllib3.PoolManager()
-#     r=http.request('GET', 'http://35.197.207.209:5000/Locations')
-#     assert 200  == r.status
+def test_films():                                                        #tests if page exists(Locations)
+    http=urllib3.PoolManager()
+    r=http.request('GET', 'http://35.242.157.109:5000/films')
+    assert 200  == r.status
 
-# def test_nonpage():                                                         #tests if page doesn't exist
-#     http=urllib3.PoolManager()
-#     r=http.request('GET', 'http://35.197.207.209:5000/About')
-#     assert 404  == r.status
+def test_nonpage():                                                         #tests if page doesn't exist
+    http=urllib3.PoolManager()
+    r=http.request('GET', 'http://35.242.157.109:5000/aboutus')
+    assert 404  == r.status
 
 # def test_select():                                               #select test
 #     with app.app_context():

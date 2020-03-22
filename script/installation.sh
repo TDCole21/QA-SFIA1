@@ -1,5 +1,5 @@
 #!/bin/bash
-source /var/lib/jenkins/workspace/SFIA1-pipeline/venv/bin/activate #change pipeline name
+source /var/lib/jenkins/workspace/SFIA1-pipeline/venv/bin/activate
 pip3 install flask
 pip3 install flask_mysqldb
 pip3 install pytest

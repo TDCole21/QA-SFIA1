@@ -18,14 +18,14 @@ def test_select():                                               #select test
         num_of_records=cur.execute('SELECT * FROM Films')    #test made on the table that's not used for CRUD 
         mysql.connection.commit()
         cur.close()
-        assert 12 == num_of_records                             #checks if the number of records in the database matches the number of entries expected to have in the table
+        assert 28 == num_of_records                             #checks if the number of records in the database matches the number of entries expected to have in the table
 
 def test_insert():                                              #insert test
     with app.app_context():
         cur= mysql.connection.cursor()
         cur.execute('SELECT * FROM Actors')                   #tests made on the table used for CRUD
         num_of_records=cur.fetchall()
-        cur.execute('INSERT INTO Actors (Actor_Name) VALUES ("test")')  #inserts at an autoincrement ID the value 'test'
+        cur.execute('INSERT INTO Actors (Actor_Name) VALUES ("z-test")')  #inserts at an autoincrement ID the value 'test'
         mysql.connection.commit()
         cur.execute('SELECT * FROM Actors')
         new_num_records=cur.fetchall()

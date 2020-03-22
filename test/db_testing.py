@@ -105,7 +105,7 @@ def test_create_actors():
 def test_actors_coherence():
     with app.app_context():
         cur = mysql.connection.cursor()
-        cur.execute("DESCRIBE actors;")
+        cur.execute("DESCRIBE Actors;")
         col = len(cur.fetchall())
         mysql.connection.commit()
         cur.close()
@@ -130,7 +130,7 @@ def test_create_films():
 def test_films_coherence():
     with app.app_context():
         cur = mysql.connection.cursor()
-        cur.execute("DESCRIBE films;")
+        cur.execute("DESCRIBE Films;")
         col = len(cur.fetchall())
         mysql.connection.commit()
         cur.close()

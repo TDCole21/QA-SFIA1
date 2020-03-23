@@ -90,7 +90,7 @@ The board is designed around user stories to test the CRUD functionalities of th
 I defined "done" as to mean that the feature had been successfully implemented into the application, and had no negative effect on the pytest application which is detailed later.
 Any implemented feature that negatively effected the performance of the application were logged into the bugs column.
 
-##### Initial Plan <a name="first_kanban_board"></a>
+#### Initial Plan <a name="first_kanban_board"></a>
 ![Initial Kanban board designed with Trello.](https://i.imgur.com/AsHnjOt.png)
 
 
@@ -99,7 +99,7 @@ Any implemented feature that negatively effected the performance of the applicat
 + I only focused on adding User Stories to the board
 + Bugs were reported and fixed as the project proceeded. No bugs by the end of the project.
 
-##### Final Board <a name="final_kanban_board"></a>
+#### Final Board <a name="final_kanban_board"></a>
 ![Final Kanban board designed with Trello.](https://i.imgur.com/fnV0YjI.png)
 
 

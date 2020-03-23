@@ -147,7 +147,7 @@ My URL and DB coverage report showed 43% and 37% respectively.
 ## Deployment <a name="deployment"></a>
 Once I have edited my code in Visual Code, I push the changes up to my developer branch on GitHub. Once a feature has been completed, I merge the developer branch into the master branch which activates a GitHub webhook with my Jenkins CI server. Jenkins can then deploy the app as a service. With the use of the Pipeline, Jenkins is able to install all the necessary packages needed to run the application, wait for the packages to be installed, deploy the application as a service and finally perform the tests mentioned in the section above. The results of these tests are printed in the console output of Jenkis, giving the user the ability to improve the testing stage if results are not satisfactory.
 
-![Deployment Architecture designed with Google Drawings](https://i.imgur.com/2f7vt4V.png)
+![Deployment Architecture designed with Google Drawings](https://i.imgur.com/9iQr9eH.png)
 
 ### Feature Branch Model <a name="branch_merge"></a>
 At the start of the project I had a single branch on my version control; the master branch.

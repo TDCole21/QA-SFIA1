@@ -100,6 +100,7 @@ Any implemented feature that negatively effected the performance of the applicat
 + Bugs were reported and fixed as the project proceeded. No bugs by the end of the project.
 
 #### Final Board <a name="final_kanban_board"></a>
+By the end, the only features left to be implemented were those states in the future improvements section in this README file.
 ![Final Kanban board designed with Trello.](https://i.imgur.com/fnV0YjI.png)
 
 

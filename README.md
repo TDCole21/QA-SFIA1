@@ -93,7 +93,7 @@ Any implemented feature that negatively effected the performance of the applicat
 
 #### Final Board
 
-![Initial Kanban board designed with Trello.](https://i.imgur.com/cNmP7XL.png)
+![Final Kanban board designed with Trello.](https://i.imgur.com/fnV0YjI.png)
 
 
 
@@ -125,14 +125,15 @@ Risk IDs 1.X are Operational Risks and 2.X are Objective Risks.
 I used both Pytest and a Coverage report to test my application
 
 ### Pytest <a name="pytest"></a>
-![URL Pytest](https://i.imgur.com/n6F40E9.png)
+![URL Pytest](https://i.imgur.com/92ec1pg.png)
 
 ![DB Pytest](https://i.imgur.com/0sfUMCZ.png)
 
 ### Coverage Report <a name="coverage_report"></a>
-![URL Coverage Report](https://i.imgur.com/3xG6z5u.png)
-
-![DB Coverage Report](https://i.imgur.com/5mBhoLU.png)
+The URL coverage report showed 43%.
+![URL Coverage Report](https://i.imgur.com/qWGRYVc.png)
+The Database (DB) coverage report showed %37. The aim was to have both coverage reports as close to 80% as possible.
+![DB Coverage Report](https://i.imgur.com/SxhTjeq.png)
 
 ## Deployment <a name="deployment"></a>
 Once I have edited my code in Visual Code, I push the changes up to my developer branch on GitHub. Once a feature has been completed, I merge the developer branch into the master branch which activates a GitHub webhook with my Jenkins CI server. Jenkins can then deploy the app as a service. With the use of the Pipeline, Jenkins is able to install all the necessary packages needed to run the application, wait for the packages to be installed, deploy the application as a service and finally perform the tests mentioned in the section above. The results of these tests are printed in the console output of Jenkis, giving the user the ability to improve the testing stage if results are not satisfactory.

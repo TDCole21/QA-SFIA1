@@ -84,7 +84,7 @@ Any implemented feature that negatively effected the performance of the applicat
 
 #### Initial Plan
 
-![Initial Kanban board designed with Trello.](https://i.imgur.com/LAkh6i3.jpg)
+![Initial Kanban board designed with Trello.](https://i.imgur.com/AsHnjOt.png)
 
 
 <!-- #### Dynamic Updates
@@ -93,7 +93,7 @@ Any implemented feature that negatively effected the performance of the applicat
 
 #### Final Board
 
-![Initial Kanban board designed with Trello.](https://i.imgur.com/kyWnBiT.png)
+![Initial Kanban board designed with Trello.](https://i.imgur.com/cNmP7XL.png)
 
 
 
@@ -114,8 +114,10 @@ Risk IDs 1.X are Operational Risks and 2.X are Objective Risks.
 |---|---|---|---|---|---|
 |1.1|Loss of content|4|8|Potential loss of large sections of the project, resulting in setbacks|Using the branch feature in git, and ensuring a frequently updated branch method|
 |1.2|GCP (Google Cloud Processing) budget limit exceeded|1|1|Personal financial cost, whilst minimal setback to project progress|Google provides $300 initial budget for all users, and disables the autopayment if the allowance runs out. To prevent this from becoming a problem, I have to ensure that feature doesn't become enabled, and to keep an eye on my remaining budget.|
+|1.3|Internet Connectivity Problems|7|9|A lot of the work for this project is done on virtual machines and requires a constant internet connection. Missing this would require large periods of time without being able to work on or update the project|There is some work that can be drafted offline before being pushed up to the cloud. If the problem seriously effects the work, then let the trainer know, such that it can be taken into consideration|
 |2.1|Time mismanagement|5|8|Falling behind on tasks means rushing on certain aspects of the project and can result in a lower quality of work.|Using methods such as a trello board and gantt chart to track my progress and ensure I don't fall behind on my work. If my work starts to fall behind, I can work on my project before/after training hours. |
-|2.2|Lack of content knowledge|5|7|A lack of understanding of the content covered in the academy will mean that I am unable to fulfill requirements needed for the project.||
+|2.2|Lack of content knowledge|5|7|A lack of understanding of the content covered in the academy will mean that I am unable to fulfill requirements needed for the project|I will first search the internet fo the answers to any questions I have, then seek peer help if I cannot find the answer, before finally approaching my trainer|
+
 |||||||
 
 
@@ -125,7 +127,7 @@ I used both Pytest and a Coverage report to test my application
 ### Pytest <a name="pytest"></a>
 ![URL Pytest](https://i.imgur.com/n6F40E9.png)
 
-![DB Pytest](https://i.imgur.com/bZx7pbh.png)
+![DB Pytest](https://i.imgur.com/0sfUMCZ.png)
 
 ### Coverage Report <a name="coverage_report"></a>
 ![URL Coverage Report](https://i.imgur.com/3xG6z5u.png)
@@ -146,11 +148,11 @@ As mentioned previously, the design aspect of the site was not of importance in 
 Instead, my aim was to make the CRUD functionalities as easy as possible for the User.
 My home page has a majority of the many to many CRUD functionalities and the Actors and Films pages are for single database manipulation.
 
-![Home page](https://i.imgur.com/VnBPWtT.png)
+![Home page](https://i.imgur.com/Wgr7rVH.png)
 
-![Actors page](https://i.imgur.com/2f7vt4V.png)
+![Actors page](https://i.imgur.com/5a0GnDL.png)
 
-![Films page](https://i.imgur.com/2f7vt4V.png)
+![Films page](https://i.imgur.com/xWaYEZS.png)
 
 ## Improvements for the Future <a name="improvements_for_the_future"></a>
 If I had more time dedicated to this project I would have implemented the following:

@@ -127,7 +127,7 @@ I used both Pytest and a Coverage report to test my application
 ### Pytest <a name="pytest"></a>
 ![URL Pytest](https://i.imgur.com/92ec1pg.png)
 
-![DB Pytest](https://i.imgur.com/0sfUMCZ.png)
+![DB Pytest](https://i.imgur.com/d7pgoVT.png)
 
 ### Coverage Report <a name="coverage_report"></a>
 The URL coverage report showed 43%.

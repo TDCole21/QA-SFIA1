@@ -18,7 +18,7 @@ This is a project, worked on independently of others, in reference to the QA Lea
 3. [Entity Relationship Diagrams](#entity_relationship_diagrams)
 4. [Risk Assessment](#risk_assessment)
 5. [Testing](#testing)
-    1. [Pytest](#report)
+    1. [Pytest](#pytest)
     2. [Coverage Report](#coverage_report)
 4. [Deployment](#deployment)
     1. [Feature Branch Model](#branch_merge)

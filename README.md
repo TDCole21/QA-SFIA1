@@ -15,7 +15,6 @@ This is a project, worked on independently of others, in reference to the QA Lea
         1. [Initial Plan](#first_kanban_board)
         2. [Dynamic Updates](#kanban_board_changes)
         3. [Final Board](#final_kanban_board)
-    
 3. [Entity Relationship Diagrams](#entity_relationship_diagrams)
 4. [Risk Assessment](#risk_assessment)
 5. [Testing](#testing)

@@ -129,18 +129,19 @@ Risk IDs 1.X are Operational Risks and 2.X are Objective Risks.
 
 
 ## Testing <a name="testing"></a>
-I used both pytest and a coverage report to test my application
+I used a unit and integration testing method as a measure of my code quality for the application.
 
-### Pytest <a name="pytest"></a>
-Both pytest programs passed all the tests, showing that the features in the site were functioning as I expected.
+### Unit Testing - Pytest <a name="pytest"></a>
+Unit testing is where individual units/ components of a software are tested. The purpose is to validate that each unit of the software performs as designed. A unit usually has one or a few inputs and usually a single output. It is the smallest testable part of any software, hence why I ran a URL and DB pytest to test each CRUD function and URL link.
 ![URL pytest](https://i.imgur.com/92ec1pg.png)
 
 ![DB pytest](https://i.imgur.com/d7pgoVT.png)
 
-### Coverage Report <a name="coverage_report"></a>
-The URL coverage report showed 43%.
+### Integration Testing - Coverage Report <a name="coverage_report"></a>
+Integration testing is where individual units are combined and tested as a group. The purpose of this level of testing is to expose faults in the interaction between integrated units. Coverage reports is a type of integration testing, and a target of +45% is acceptable and 80+% is desired.
+My URL and DB coverage report showed 43% and 37% respectively.
 ![URL coverage report](https://i.imgur.com/qWGRYVc.png)
-The Database (DB) coverage report showed %37. The aim was to have both coverage reports as close to 80% as possible.
+
 ![DB coverage report](https://i.imgur.com/SxhTjeq.png)
 
 ## Deployment <a name="deployment"></a>
@@ -158,29 +159,29 @@ Instead, my aim was to make the CRUD functionalities as easy as possible for the
 My home page has a majority of the many to many CRUD functionalities and the Actors and Films pages are for single database manipulation.
 
 Home Page
-![Home page](https://i.imgur.com/Wgr7rVH.png)
+![Home page](https://i.imgur.com/qKThySL.png)
 Actors Page
-![Actors page](https://i.imgur.com/5a0GnDL.png)
+![Actors page](https://i.imgur.com/1dUZNXh.png)
 Films Page
-![Films page](https://i.imgur.com/xWaYEZS.png)
+![Films page](https://i.imgur.com/gCkUEkU.png)
 
-## Improvements for the Future <a name="improvements_for_the_future"></a>
+## Improvements for the future <a name="improvements_for_the_future"></a>
 If I had more time dedicated to this project I would have implemented the following:
 + **A User/Developer log-in feature:**
 This would have allowed for the Developer profiles to have have full access to the film and actors database, allowing them full CRUD functionalities.
 The User profiles would have only been permitted to view the databases, and searched for which actors/films they would have wanted to see. Maybe even a request feature, so that they could suggests additions/updates/removals to the database.
-+ **Increased Testing coverage:**
++ **Increased testing coverage:**
 As shown previous in the coverage report section of the readme file, there was little coverage of the application, even though a lot of its core features where tested. This is definitely an area i would like to improve in later projects.
 + **Improved UI:**
 Due to the nature of Agile, I prioritised working CRUD functionality over the documentation and presentation of the project. This meant I did not spend time on the design aspects of the site.
-+ **Selenium Testing:**
-My testing protocol only included unit and database testing. Had more time been allowed, I would have researched and implemented further methods of testing.
-+ **More Complex Tables and Relationships:**
++ **Selenium testing:**
+My testing protocol only included unit and integration testing. Had more time been allowed, I would have researched and implemented further methods of testing.
++ **Additional tables and relationships:**
 My project uses a many-to-many relationship between two tables. However, given more time, I would have prioritised including new tables such as directors, which would have shown much greater understanding of the material covered.
 Also included would have been more columns in the tables, genres for example, which would have allowed for more features on the the application.
-+ **More CRUD Functionalities:**
++ **Improved CRUD functionalities:**
 Although, I included a diverse amount of CRUD functionalities in my project, there were more to be tested. An update many to many relationship for example, or a multi-select drop down list instead of either text boxes or single-select dropdown lists. 
-+ **Complex Version Control Branch Model:**
++ **Complex version control branch model:**
 I only used two branches in my project; a master branch and developer branch. To help prepare better for best practice in industry, I would have further branches underneath the developer branch for each product backlog then further branches for the sprint backlogs and then again for the tasks.
 
 
